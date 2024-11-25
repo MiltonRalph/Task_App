@@ -6,7 +6,6 @@ const bodyParser = require('body-parser');
 const taskRoutes = require('./routes/taskRoutes');
 const userRoutes = require('./routes/userRoutes');
 const morgan = require('morgan');
-const helmet = require('helmet');
 
 dotenv.config();
 
@@ -28,7 +27,6 @@ app.use(cors({
   credentials: true,
 }));
 app.use(bodyParser.json());
-app.use(helmet());
 
 app.use('/api/v1/tasks', taskRoutes);
 app.use('/api/v1/users', userRoutes);
