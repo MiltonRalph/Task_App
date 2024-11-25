@@ -10,7 +10,7 @@ const morgan = require('morgan');
 dotenv.config();
 
 const allowedOrigins = [
-  'https://your-netlify-site.netlify.app',
+  'https://taskme123.netlify.app',
 ];
 
 const app = express();
