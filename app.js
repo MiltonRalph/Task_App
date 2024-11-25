@@ -10,10 +10,23 @@ const helmet = require('helmet');
 
 dotenv.config();
 
+const allowedOrigins = [
+  'https://your-netlify-site.netlify.app',
+];
+
 const app = express();
 app.use(express.json());
 app.use(morgan('dev'));
-app.use(cors());
+app.use(cors({
+  origin: (origin, callback) => {
+    if (allowedOrigins.includes(origin) || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+}));
 app.use(bodyParser.json());
 app.use(helmet());
 
